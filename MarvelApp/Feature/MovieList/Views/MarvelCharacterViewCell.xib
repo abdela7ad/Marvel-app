@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="167" id="KGk-i7-Jjw" customClass="MarvelCharacterViewCell" customModule="MarvelApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="166.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YgO-Yl-s8l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="160" id="ngt-RR-ssT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH5-0o-nbV" customClass="PaddingLabel" customModule="MarvelApp" customModuleProvider="target">
+                        <rect key="frame" x="32" y="100" width="59" height="36.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="CXv-1R-v2b"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YgO-Yl-s8l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Cif-9w-usq"/>
+                    <constraint firstItem="CH5-0o-nbV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="Cty-IX-4Fv"/>
+                    <constraint firstItem="CH5-0o-nbV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="100" id="Dgt-eb-Vhn"/>
+                    <constraint firstAttribute="bottom" secondItem="YgO-Yl-s8l" secondAttribute="bottom" id="H8v-xk-5FV"/>
+                    <constraint firstAttribute="trailing" secondItem="YgO-Yl-s8l" secondAttribute="trailing" id="fxD-Ti-XST"/>
+                    <constraint firstItem="YgO-Yl-s8l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pTk-vL-Ke1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="characterImage" destination="YgO-Yl-s8l" id="OxM-eh-IkC"/>
+                <outlet property="characterName" destination="CH5-0o-nbV" id="1yP-Sz-HkH"/>
+            </connections>
+            <point key="canvasLocation" x="-24.637681159420293" y="33.816964285714285"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelApp/Config.swift"
+            timestampString = "578169913.66109"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "hash"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelApp/Feature/Networking/NetworkAdapter.swift"
+            timestampString = "578169913.661166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "request(targetType:success:error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MarvelApp/Feature/MovieList/ViewModels/CharachterListViewModel.swift"
+            timestampString = "578169913.66123"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "getMovieList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MarvelApp.CharacterItems) -&gt; () in MarvelApp.CharachterListViewModel.getMovieList() -&gt; ()"
+                  moduleName = "MarvelApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/I4pixel/Desktop/IOS:OSX/Freelancer/MarvelApp/MarvelApp/Feature/MovieList/ViewModels/CharachterListViewModel.swift"
+                  timestampString = "578168859.600967"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "51">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MarvelApp.CharacterItem) -&gt; MarvelApp.CharacterViewModel in closure #1 (MarvelApp.CharacterItems) -&gt; () in MarvelApp.CharachterListViewModel.getMovieList() -&gt; ()"
+                  moduleName = "MarvelApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/I4pixel/Desktop/IOS:OSX/Freelancer/MarvelApp/MarvelApp/Feature/MovieList/ViewModels/CharachterListViewModel.swift"
+                  timestampString = "578168859.6027991"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

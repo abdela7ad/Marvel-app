@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (4.8.2)
+  - GenericDataSources (3.0.3)
+  - Kingfisher (5.4.0)
+  - Moya (13.0.0):
+    - Moya/Core (= 13.0.0)
+  - Moya/Core (13.0.0):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Result (4.1.0)
+  - Signals (6.1.0)
+
+DEPENDENCIES:
+  - GenericDataSources
+  - Kingfisher
+  - Moya
+  - Signals
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - GenericDataSources
+    - Kingfisher
+    - Moya
+    - Result
+    - Signals
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  GenericDataSources: 4e9150bd121d92ee152c5f5c5dcd15d74e609d75
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
+  Moya: 161263550064ff8a4948e8ff63137fd72a876292
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Signals: f8e5c979e93c35273f8dfe55ee7f47213d3e8fe8
+
+PODFILE CHECKSUM: bf8b1e1280ccd5fc2cbcd42652d1f973c0754fbf
+
+COCOAPODS: 1.5.0
