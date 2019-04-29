@@ -51,7 +51,7 @@ class ItemViewModel: ItemViewModelType {
     }
     
     var imageURL: URL?{
-     return URL(string: "https://static.comicvine.com/uploads/scale_small/11125/111253019/6532464-return_of_wolverine_vol_1_2_textless.jpg")
+      return URL(string: item.resourceURI)
     }
     
     var characterName: String{

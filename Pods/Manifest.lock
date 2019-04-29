@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
+  - CRRefresh (1.1.3)
   - GenericDataSources (3.0.3)
   - Kingfisher (5.4.0)
   - Moya (13.0.0):
@@ -11,6 +12,7 @@ PODS:
   - Signals (6.1.0)
 
 DEPENDENCIES:
+  - CRRefresh
   - GenericDataSources
   - Kingfisher
   - Moya
@@ -19,6 +21,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - CRRefresh
     - GenericDataSources
     - Kingfisher
     - Moya
@@ -27,12 +30,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044
   GenericDataSources: 4e9150bd121d92ee152c5f5c5dcd15d74e609d75
   Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
   Moya: 161263550064ff8a4948e8ff63137fd72a876292
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   Signals: f8e5c979e93c35273f8dfe55ee7f47213d3e8fe8
 
-PODFILE CHECKSUM: bf8b1e1280ccd5fc2cbcd42652d1f973c0754fbf
+PODFILE CHECKSUM: 79be79da4234d0935b60886ef7528e61a40dea83
 
 COCOAPODS: 1.5.0

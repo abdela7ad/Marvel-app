@@ -25,8 +25,6 @@ class CharacterViewModel : CharacterViewModelType{
     init(charachterItem : CharacterItem) {
         self.charachterItem = charachterItem
     }
-    
-    
 }
 
 

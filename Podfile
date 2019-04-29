@@ -9,6 +9,7 @@ target 'MarvelApp' do
   pod 'Signals'
   pod 'Kingfisher'
   pod 'GenericDataSources'
+  pod 'CRRefresh'
 
   
   # Pods for MarvelApp

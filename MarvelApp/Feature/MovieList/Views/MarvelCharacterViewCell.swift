@@ -19,6 +19,10 @@ class MarvelCharacterViewCell: UITableViewCell {
         // Initialization code
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        characterImage.image = nil
+    }
     func configure(cellViewModel:CharacterItemViewModelType) {
         characterName.text = cellViewModel.displayName
         characterImage.kf.setImage(with: cellViewModel.thumbnailUrl)
