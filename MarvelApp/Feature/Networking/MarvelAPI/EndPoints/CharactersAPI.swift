@@ -11,12 +11,13 @@ import Moya
 
 enum CharactersAPI {
     case characters(offset:Int , limit: Int)
+    case searchCharacters(nameStartsWith:String)
 }
 
 extension CharactersAPI : MarvelPublicAPIService{
     var path: String {
         switch self {
-        case .characters:
+        case .characters,.searchCharacters:
             return "/characters"
         }
     }
@@ -25,14 +26,16 @@ extension CharactersAPI : MarvelPublicAPIService{
     }
     
     var task: Task {
+        let ts = "\(Date().timeIntervalSince1970)"
+        let stringToHash = ts + AppConfig.PRIVATEKEY + AppConfig.APIKEY
         
         switch self {
         case let .characters(offset, limit):
-            
-            let ts = "\(Date().timeIntervalSinceNow)"
-            let stringToHash = ts + AppConfig.PRIVATEKEY + AppConfig.APIKEY 
-            
             return.requestParameters(parameters: ["apikey":AppConfig.APIKEY,"hash" : stringToHash.hashed(.md5)! ,"ts" :ts ,"limit":limit,"offset" : offset], encoding: URLEncoding.default)
+            
+        case let.searchCharacters(nameStartsWith):
+            return.requestParameters(parameters: ["apikey":AppConfig.APIKEY,"hash" : stringToHash.hashed(.md5)! ,"ts" :ts ,"nameStartsWith":nameStartsWith], encoding: URLEncoding.default)
+
         }
     }
 }

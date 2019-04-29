@@ -15,6 +15,8 @@ import Signals
 enum CharachterListViewState {
     case empty
     case loaded(items:[CharacterViewModelType])
+    case error
+
 }
 
 class CharachterListViewModel  {
@@ -22,7 +24,8 @@ class CharachterListViewModel  {
    
     var mentorViewState  = Signal<CharachterListViewState>()
     var didSelectCharacter  = Signal<CharacterViewModelType>()
-    
+    var searchHandler  = Signal<Void>()
+
     private var items = [CharacterViewModelType]()
     private var offset = 0
     private let limit = 20
@@ -34,17 +37,20 @@ class CharachterListViewModel  {
             self.items += characterItems.results.map{CharacterViewModel(charachterItem: $0)}
             self.mentorViewState.fire(.loaded(items: self.items))
         }) { (error) in
+            self.mentorViewState.fire(.error)
         }
     }
     
     func next(){
-        offset = offset + limit
-        guard total < offset else {
+        guard total > offset else {
             return
         }
+        offset = offset + limit
         getMovieList()
     }
     func showCharacter(characterViewModel:CharacterViewModelType){
        didSelectCharacter.fire(characterViewModel)
     }
+    
+    
 }

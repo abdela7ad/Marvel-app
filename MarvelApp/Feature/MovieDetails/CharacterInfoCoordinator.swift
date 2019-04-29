@@ -12,7 +12,7 @@ final class CharacterInfoCoordinator : Coordinator<DeepLink> {
     
     private var  characterViewModel:CharacterViewModelType
     
-     var  onFinishFlow = Signal<Void>()
+     var  onFinishFlow = Signal<RouterType>()
 
     init(router: RouterType = Router() , characterViewModel : CharacterViewModelType) {
         self.characterViewModel = characterViewModel
@@ -29,7 +29,7 @@ final class CharacterInfoCoordinator : Coordinator<DeepLink> {
         router.navigationController.isNavigationBarHidden = true
         router.push(characterDetailsViewController, animated: true, completion: nil)
         viewModel.onDidSelectBack.subscribe(with: self) { (_) in
-            self.onFinishFlow.fire(Void())
+            self.onFinishFlow.fire(self.router)
         }
     }
     

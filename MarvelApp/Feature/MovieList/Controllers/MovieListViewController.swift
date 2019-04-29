@@ -27,10 +27,15 @@ class MovieListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        viewModel.getMovieList()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_search")) { _ in
+             self.viewModel.searchHandler.fire(Void())
+        }
+        
+          viewModel.getMovieList()
 
-       setUpDataSource()
-       bindViewModel()
+          setUpDataSource()
+          bindViewModel()
         
     }
 
@@ -47,16 +52,7 @@ class MovieListViewController: UIViewController {
                   self.viewModel.showCharacter(characterViewModel: item)
               }
         }
-        
-//         let selectionHandler =  BlockSelectionHandler<CharacterViewModelType,MarvelCharacterViewCell>()
-//        dataSource?.setSelectionHandler(selectionHandler)
-//
-//        selectionHandler.didSelectBlock = { (datasource, tableView, indexPath)  in
-//
-//            DispatchQueue.main.async {
-//               self.viewModel.showCharacter(characterViewModel: datasource.items[indexPath.row])
-//            }
-//        }
+
         
         tableView.cr.addFootRefresh(animator: NormalFooterAnimator()) {
             self.viewModel.next()
@@ -76,7 +72,7 @@ class MovieListViewController: UIViewController {
                 self.tableView.reloadData()
                 self.tableView.cr.endLoadingMore()
             default:
-                break
+                self.tableView.cr.endLoadingMore()
             }
         }
     }

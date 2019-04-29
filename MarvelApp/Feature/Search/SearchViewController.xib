@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="MarvelApp" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="SLV-OU-eGW" id="vZX-Ug-udu"/>
+                <outlet property="tableView" destination="tjs-Ii-u2z" id="bvy-9g-Fd7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVn-lU-apL">
+                    <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nG-gK-4Tm">
+                            <rect key="frame" x="358" y="15" width="48" height="30"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                            </state>
+                            <connections>
+                                <action selector="cancel:" destination="-1" eventType="touchUpInside" id="did-JM-lVS"/>
+                            </connections>
+                        </button>
+                        <searchBar contentMode="redraw" searchBarStyle="prominent" text="" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="SLV-OU-eGW">
+                            <rect key="frame" x="8" y="2" width="342" height="56"/>
+                            <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="YQB-y6-z9V"/>
+                            </connections>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="6Y8-mB-VPE"/>
+                        <constraint firstItem="SLV-OU-eGW" firstAttribute="leading" secondItem="nVn-lU-apL" secondAttribute="leading" constant="8" id="H3E-ij-jE1"/>
+                        <constraint firstItem="1nG-gK-4Tm" firstAttribute="centerY" secondItem="SLV-OU-eGW" secondAttribute="centerY" id="KCM-mU-YSy"/>
+                        <constraint firstItem="1nG-gK-4Tm" firstAttribute="centerY" secondItem="nVn-lU-apL" secondAttribute="centerY" id="PIZ-eG-Mag"/>
+                        <constraint firstAttribute="trailing" secondItem="1nG-gK-4Tm" secondAttribute="trailing" constant="8" id="U4P-lm-KmD"/>
+                        <constraint firstItem="1nG-gK-4Tm" firstAttribute="leading" secondItem="SLV-OU-eGW" secondAttribute="trailing" constant="8" id="vVJ-mh-Ssq"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tjs-Ii-u2z">
+                    <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tjs-Ii-u2z" secondAttribute="trailing" id="9hK-bA-wim"/>
+                <constraint firstItem="tjs-Ii-u2z" firstAttribute="top" secondItem="nVn-lU-apL" secondAttribute="bottom" id="KXN-Hc-NfU"/>
+                <constraint firstItem="nVn-lU-apL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YPj-ea-7GO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tjs-Ii-u2z" secondAttribute="bottom" id="hLc-SZ-FOf"/>
+                <constraint firstItem="nVn-lU-apL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hyq-ke-jWL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nVn-lU-apL" secondAttribute="trailing" id="iIU-xw-p22"/>
+                <constraint firstItem="tjs-Ii-u2z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qLN-g6-7uh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.782608695652179" y="34.821428571428569"/>
+        </view>
+    </objects>
+</document>

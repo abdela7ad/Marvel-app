@@ -23,19 +23,38 @@ final class MainFlowCoordinator : Coordinator<DeepLink> {
         let movieListViewController = MovieListViewController()
         router.setRootModule(movieListViewController, hideBar: false)
         movieListViewController.viewModel.didSelectCharacter.subscribe(with: self) { (characterViewModel) in
-            self.showCharacterDeials(characterViewModel: characterViewModel)
+            self.runCharacterDeials(characterViewModel: characterViewModel)
         }
+        
+        movieListViewController.viewModel.searchHandler.subscribe(with: self) { (characterViewModel) in
+            self.runSearchView()
+        }
+        
     }
     
-    private func showCharacterDeials(characterViewModel:CharacterViewModelType){
+    private func runCharacterDeials(characterViewModel:CharacterViewModelType ){
+        
         
         let characterDetailsCoordinator =  CharacterInfoCoordinator(router: router, characterViewModel: characterViewModel)
         addChild(characterDetailsCoordinator)
         characterDetailsCoordinator.start()
-        characterDetailsCoordinator.onFinishFlow.subscribe(with: self) { (_) in
-            self.router.popModule(animated: false)
-            self.router.navigationController.isNavigationBarHidden = false
+        characterDetailsCoordinator.onFinishFlow.subscribe(with: self) { (router) in
+            router.popModule(animated: false)
+            router.navigationController.isNavigationBarHidden = false
+            self.removeChild(characterDetailsCoordinator)
         }
+    }
+    
+    private func runSearchView(){
+        
+        let searchCoordinator =  SearchCoordinator()
+        addChild(searchCoordinator)
+        searchCoordinator.start()
+        searchCoordinator.onFinishFlow.subscribe(with: self) { (_) in
+            self.router.dismissModule(animated: true, completion: nil)
+            self.removeChild(searchCoordinator)
+        }
+        router.present(searchCoordinator.toPresentable(), animated: true)
     }
 
 }
