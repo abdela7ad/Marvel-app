@@ -42,6 +42,12 @@ class MovieListViewController: UIViewController {
        dataSource.selectedDataSourceIndex = 0
        tableView.ds_useDataSource(dataSource)
         
+        dataSource.onDidSelect.subscribe(with: self) { (item) in
+            DispatchQueue.main.async {
+                  self.viewModel.showCharacter(characterViewModel: item)
+              }
+        }
+        
 //         let selectionHandler =  BlockSelectionHandler<CharacterViewModelType,MarvelCharacterViewCell>()
 //        dataSource?.setSelectionHandler(selectionHandler)
 //

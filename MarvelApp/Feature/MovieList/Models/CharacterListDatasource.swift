@@ -8,12 +8,14 @@
 
 import Foundation
 import GenericDataSources
+import Signals
 
 final class CharacterListDatasource: SegmentedDataSource {
     
     private let loading = LoadingDataSource()
     private let charactersItems = CharactersDataSource()
     
+    var onDidSelect = Signal<CharacterViewModelType>()
     // reload data on index change
     override var selectedDataSourceIndex: Int {
         didSet {
@@ -26,6 +28,11 @@ final class CharacterListDatasource: SegmentedDataSource {
         loading.items = [Void()]
         add(loading)
         add(charactersItems)
+        charactersItems.onDidSelect.subscribe(with: self) { (item) in
+            DispatchQueue.main.async {
+                self.onDidSelect.fire(item)
+            }
+        }
     }
     
     func setCharactersItems(items:[CharacterViewModelType]) {
@@ -41,6 +48,8 @@ final class LoadingDataSource: BasicDataSource<Void, LoadingViewCell> {
 
 final class CharactersDataSource: BasicDataSource<CharacterViewModelType,MarvelCharacterViewCell> {
    
+    var onDidSelect = Signal<CharacterViewModelType>()
+
     override func ds_collectionView(_ collectionView: GeneralCollectionView, configure cell: MarvelCharacterViewCell, with item: CharacterViewModelType, at indexPath: IndexPath) {
         cell.configure(cellViewModel: item)
     }
@@ -49,8 +58,9 @@ final class CharactersDataSource: BasicDataSource<CharacterViewModelType,MarvelC
     }
     
     override func ds_collectionView(_ collectionView: GeneralCollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
+        DispatchQueue.main.async {
+            self.onDidSelect.fire(self.items[indexPath.row])
+        }
     }
     
 }
