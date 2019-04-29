@@ -10,15 +10,16 @@ import UIKit
 
 class RelatedLinkViewCell: UITableViewCell {
 
+    @IBOutlet weak var linkLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+   
+    func configure(item:URLElement) {
+        linkLabel.text = item.type.rawValue.capitalized
     }
     
 }

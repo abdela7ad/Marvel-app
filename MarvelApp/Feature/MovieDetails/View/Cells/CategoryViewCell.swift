@@ -19,6 +19,7 @@ class CategoryViewCell: UITableViewCell {
         super.awakeFromNib()
         collectionView.ds_register(cellNib: ItemViewCell.self)
         collectionView.ds_useDataSource(dataSource)
+        title.textColor = .red
     }
     
     override var layoutMargins: UIEdgeInsets {
@@ -30,4 +31,9 @@ class CategoryViewCell: UITableViewCell {
         }
     }
     
+    func configure(viewModel:CategoryViewModelType){
+        title.text = viewModel.sectionName
+        dataSource.items = viewModel.items
+        collectionView.reloadData()
+    }
 }

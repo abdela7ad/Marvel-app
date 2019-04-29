@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import Signals
 
 
 protocol CharacterInfoViewModelType : CharacterItemViewModelType {
    var characterDescription : String {get}
 }
+
+
 
 struct ChararcterInfo: CharacterInfoViewModelType {
     var characterDescription: String
@@ -24,11 +27,11 @@ struct ChararcterInfo: CharacterInfoViewModelType {
 
 
 
-enum CategoryType:String {
-    case comics
-    case series
-    case event
-    case stories
+enum CategoryType : String {
+    case comics = "Comics"
+    case series = "Series"
+    case event  = "Event"
+    case stories = "Stories"
 }
 struct CategorySection {
     let categoryName :CategoryType
@@ -38,31 +41,34 @@ struct CategorySection {
 class CharacterDetailViewModel {
     
     private var characterViewModel :CharacterViewModelType
-    
+    var onDidSelectBack = Signal<Void>()
     init(characterViewModel:CharacterViewModelType) {
         self.characterViewModel = characterViewModel
     }
     
     var characterInfo : CharacterInfoViewModelType {
-        return ChararcterInfo(characterDescription: characterViewModel.charachterItem.description, displayName: characterViewModel.displayName, thumbnailUrl: characterViewModel.thumbnailUrl)
+        return ChararcterInfo(characterDescription: (characterViewModel.charachterItem.description).isEmpty ? "-" :characterViewModel.charachterItem.description, displayName: characterViewModel.displayName, thumbnailUrl: characterViewModel.thumbnailUrl)
     }
+    
     var urlElement : [URLElement] {
         return characterViewModel.charachterItem.urls
     }
     
-    var categorySection : [CategorySection] {
+    var categorySection : [CategoryViewModelType] {
         
-        return [CategorySection(categoryName: .comics, category: characterViewModel.charachterItem.comics),
-                CategorySection(categoryName: .event, category: characterViewModel.charachterItem.event),
-         CategorySection(categoryName: .series, category: characterViewModel.charachterItem.series),
-         CategorySection(categoryName: .stories, category: characterViewModel.charachterItem.stories)
-            ].filter({ (section) -> Bool in
-                return (section.category != nil  && (section.category?.items.count) ?? 0 > 0)
-            })
-    }
+         return
+            [CategoryViewModel(type: .comics, category:  characterViewModel.charachterItem.comics),
+            CategoryViewModel(type: .series, category:  characterViewModel.charachterItem.series),
+            CategoryViewModel(type: .event, category:  characterViewModel.charachterItem.event),
+            CategoryViewModel(type: .stories, category:  characterViewModel.charachterItem.stories)].filter({$0.items.count > 0})
+    
+          }
+   
     
     var relatedLinkLabel: String {
-        
         return "RELATED LINKS"
     }
+    
+    
+    
 }

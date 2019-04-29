@@ -8,9 +8,12 @@
 
 import Foundation
 import GenericDataSources
+import Signals
 
 class CharacterDetailDatasource: CompositeDataSource {
     
+    var onDidSelectBack =  Signal<Void>()
+
     init() {
         super.init(sectionType: .single)
     }
@@ -30,8 +33,12 @@ class CharacterDetailDatasource: CompositeDataSource {
             characterInfo.items = [characterDetails.characterInfo]
             add(characterInfo)
 
+            characterInfo.onBack.subscribe(with: self) { (_) in
+                self.onDidSelectBack.fire(Void())
+            }
             
             let categoryDataSource = CategoryDataSource()
+            categoryDataSource.setSelectionHandler(UnselectableSelectionHandler())
             categoryDataSource.items = characterDetails.categorySection
             add(categoryDataSource)
             
@@ -55,8 +62,13 @@ class CharacterDetailDatasource: CompositeDataSource {
 
 class CharacterInfoDataSource: BasicDataSource<CharacterInfoViewModelType, CharacterInfoViewCell> {
 
+     var onBack =  Signal<Void>()
+    
     override func ds_collectionView(_ collectionView: GeneralCollectionView, configure cell: CharacterInfoViewCell, with item: CharacterInfoViewModelType, at indexPath: IndexPath) {
         cell.configure(viewModel: item)
+        cell.onBackHandler = {[weak self] in
+            self?.onBack.fire(Void())
+        }
     }
     
     override func ds_collectionView(_ collectionView: GeneralCollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -64,13 +76,10 @@ class CharacterInfoDataSource: BasicDataSource<CharacterInfoViewModelType, Chara
     }
 }
 
-class CategoryDataSource: BasicDataSource<CategorySection, CategoryViewCell> {
+class CategoryDataSource: BasicDataSource<CategoryViewModelType, CategoryViewCell> {
 
-    override func ds_collectionView(_ collectionView: GeneralCollectionView, configure cell: CategoryViewCell, with item: CategorySection, at indexPath: IndexPath) {
-        cell.dataSource.items = item.category?.items ?? []
-        cell.collectionView.reloadData()
-
-        
+    override func ds_collectionView(_ collectionView: GeneralCollectionView, configure cell: CategoryViewCell, with item: CategoryViewModelType, at indexPath: IndexPath) {
+        cell.configure(viewModel: item)        
     }
     
     override func ds_collectionView(_ collectionView: GeneralCollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -83,7 +92,7 @@ class CategoryDataSource: BasicDataSource<CategorySection, CategoryViewCell> {
 class RelatedLinkLabelDataSource: BasicDataSource<String, RelatedLinkLabelViewCell> {
     
     override func ds_collectionView(_ collectionView: GeneralCollectionView, configure cell: RelatedLinkLabelViewCell, with item: String, at indexPath: IndexPath) {
-        // cell.label.text = item
+         cell.titleLabel.text = item
 
     }
 
@@ -94,14 +103,10 @@ class RelatedLinkLabelDataSource: BasicDataSource<String, RelatedLinkLabelViewCe
 
 class RelatedLinkDataSource: BasicDataSource<URLElement, RelatedLinkViewCell> {
     override func ds_collectionView(_ collectionView: GeneralCollectionView, configure cell: RelatedLinkViewCell, with item: URLElement, at indexPath: IndexPath) {
-        //cell.label.text = item.name
+        cell.configure(item:item)
     }
     
-    override func ds_collectionView(_ collectionView: GeneralCollectionView, didSelectItemAt indexPath: IndexPath) {
-       // let item = self.item(at: indexPath)
-        //UIApplication.shared.openURL(item.url)
-    }
-    
+   
     override func ds_collectionView(_ collectionView: GeneralCollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.size.width, height: 45)
     }

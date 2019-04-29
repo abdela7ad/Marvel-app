@@ -36,6 +36,10 @@ class MovieDetailsViewController: UIViewController {
         tableView.ds_register(cellNib: RelatedLinkLabelViewCell.self)
         tableView.ds_register(cellNib: CharacterInfoViewCell.self)
         tableView.ds_register(cellNib: RelatedLinkViewCell.self)
+        
+        datasource.onDidSelectBack.subscribe(with: self) { (_) in
+            self.viewModel.onDidSelectBack.fire(Void())
+        }
 
     }
 }

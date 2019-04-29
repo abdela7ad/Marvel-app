@@ -13,7 +13,9 @@ class CharacterInfoViewCell: UITableViewCell {
     @IBOutlet private weak var characterImage : UIImageView!
     @IBOutlet private weak var title : UILabel!
     @IBOutlet private weak var content : UILabel!
-
+    
+    var onBackHandler  = {}
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +27,9 @@ class CharacterInfoViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func backHandler(sender:UIButton) {
+        onBackHandler()
+    }
     
     func configure(viewModel:CharacterInfoViewModelType){
         characterImage.kf.setImage(with: viewModel.thumbnailUrl)

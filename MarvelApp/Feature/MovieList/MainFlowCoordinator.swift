@@ -28,10 +28,14 @@ final class MainFlowCoordinator : Coordinator<DeepLink> {
     }
     
     private func showCharacterDeials(characterViewModel:CharacterViewModelType){
-        let viewModel = CharacterDetailViewModel(characterViewModel: characterViewModel)
-        let characterDetailsViewController = MovieDetailsViewController(viewModel: viewModel)
-
-        router.push(characterDetailsViewController, animated: true, completion: nil)
+        
+        let characterDetailsCoordinator =  CharacterInfoCoordinator(router: router, characterViewModel: characterViewModel)
+        addChild(characterDetailsCoordinator)
+        characterDetailsCoordinator.start()
+        characterDetailsCoordinator.onFinishFlow.subscribe(with: self) { (_) in
+            self.router.popModule(animated: false)
+            self.router.navigationController.isNavigationBarHidden = false
+        }
     }
 
 }
